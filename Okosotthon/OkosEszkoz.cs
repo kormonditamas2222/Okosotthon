@@ -14,29 +14,39 @@ namespace Okosotthon
 
         public OkosEszkoz(string azonosito, string nev)
         {
-
-            throw new NotImplementedException();
+            this.azonosito = azonosito;
+            this.nev = nev;
+            OnlineE = false;
+            UtolsoFrissites = DateTime.Now;
         }
 
+        public string Azonosito { get => azonosito; private set => azonosito = value; }
+        public string Nev { get => nev; private set => nev = value; }
+        public bool OnlineE { get => onlineE; private set => onlineE = value; }
+        public DateTime UtolsoFrissites { get => utolsoFrissites; protected set => utolsoFrissites = value; }
 
         public void Csatlakozas()
         {
-            throw new NotImplementedException();
+            this.onlineE = true;
         }
 
 
         public void KapcsolatBontasa()
         {
-            throw new NotImplementedException();
+            this.onlineE = false;
         }
         public bool DiagnosztikaFuttatasa()
         {
-            throw new NotImplementedException();
+            if (this.onlineE)
+            {
+                return this.OnTesztFuttatasa();
+            }
+            return false;
         }
 
         public virtual void GyariBeallitasokVisszaallitasa()
         {
-            throw new NotImplementedException();
+            Console.WriteLine($"{azonosito} - {nev} eszközön alapértelmezett beállítások visszaállítása.");
         }
 
 
